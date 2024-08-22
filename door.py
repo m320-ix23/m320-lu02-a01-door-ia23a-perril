@@ -23,7 +23,7 @@ class Door:
         # Hier wird der Setter eines Attributs aufgerufen (siehe unten)
         self.color = base_color
         self._door_is_open = False
-        self._door_is_locked = False
+        self.door_is_locked = False
 
     # Nach den Konstruktoren folgen Methoden, die eine Verarbeitung auslösen.
     # Danach folgen Methoden, die auf ein Ereignis reagieren
@@ -32,7 +32,7 @@ class Door:
         Methode für das öffnen der Türe.
         Das ist aber nur möglich, wenn die Türe nicht verriegelt ist.
         """
-        if self._door_is_locked == False:
+        if self.door_is_locked == False:
             self._door_is_open = True
 
     def close_the_door(self):
@@ -49,7 +49,7 @@ class Door:
         Für das verriegeln ist aber das Türschloss zuständig. Es weiss wie das geht.
         """
         if self._door_is_open == False:
-            self._door_is_locked = self._the_door_lock.lock()
+            self.door_is_locked = self._the_door_lock.lock()
 
     def unlock_the_door(self):
         """
@@ -57,8 +57,8 @@ class Door:
         Das ist nur möglich, wenn die Türe verriegelt ist.
         Für das entriegeln ist aber das Türschloss zuständig. Es weiss wie das geht.
         """
-        if self._door_is_locked:
-            self._door_is_locked = self._the_door_lock.unlock()
+        if self.door_is_locked:
+            self.door_is_locked = self._the_door_lock.unlock()
 
     def test(self):
         """
@@ -66,7 +66,7 @@ class Door:
         """
         print(f'Türfarbe {self.color}'
               f'Türe offen: {self._door_is_open}'
-              f'Türe verriegelt: {self._door_is_locked}')
+              f'Türe verriegelt: {self.door_is_locked}')
 
     # Am Ende folgen die getter- und setter-Methoden für die Attribute der Klasse
     # getter werden mit der Anotation @property markiert.
