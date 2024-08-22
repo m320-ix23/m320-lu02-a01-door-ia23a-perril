@@ -32,7 +32,7 @@ class Door:
         Methode für das öffnen der Türe.
         Das ist aber nur möglich, wenn die Türe nicht verriegelt ist.
         """
-        if self.door_is_locked == False:
+        if not self.door_is_locked:
             self._door_is_open = True
 
     def close_the_door(self):
@@ -48,7 +48,7 @@ class Door:
         Das ist nur möglich, wenn die Türe nicht offen ist.
         Für das verriegeln ist aber das Türschloss zuständig. Es weiss wie das geht.
         """
-        if self._door_is_open == False:
+        if not self._door_is_open:
             self.door_is_locked = self._the_door_lock.lock()
 
     def unlock_the_door(self):
@@ -84,7 +84,7 @@ class Door:
         getter-Methode für den Zustand door_is_locked
         :return: true, wenn die Türe verriegelt ist, sonst false
         """
-        return self._door_is_locked
+        return self.door_is_locked
 
     @property
     def color(self):
